@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const paths = require('../utils/paths');
 
+
 module.exports = env => ({
   devtool: 'cheap-eval-source-map',
   output: {
@@ -16,12 +17,13 @@ module.exports = env => ({
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
       },
+      { test: /\.handlebars$/, loader: "handlebars-loader" }
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './index.html',
-    }),
+    }), 
   ],
   devServer: {
     contentBase: paths.BUILD_DIR,
